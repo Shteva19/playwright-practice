@@ -15,33 +15,22 @@ test.beforeEach(async ({page})=> {
   loginData = new LoginData(page);
   await page.goto('/');
   await page.getByText('Sign up').click();
-
-  
 })
-
-
 test('Name is required', async ({ page }) => {
   await registrationForm.clickSignUpButton();
   await loginData.validName.focus();
   await loginData.validName.blur();
   await expect(page.getByText('Name required')).toBeVisible();
- 
-  
 });
-
 test('Name is invalid', async ({ page }) => {
   await loginData.inputName('Євген');
   await loginData.inputLastName('Shtevnin');
   await expect(page.getByText('Name is invalid')).toBeVisible();
-
 })
-
 test('Wrong length name', async ({ page }) => {
   await loginData.inputName('Л');
   await loginData.inputLastName('Shtevnin');
    await expect(page.getByText('Name has to be from 2 to 20 characters long')).toBeVisible();
-
-
 })
 test('Border color red Name', async ({ page }) => {
   await loginData.validName.focus();
@@ -49,9 +38,8 @@ test('Border color red Name', async ({ page }) => {
   await expect(loginData.validName).toHaveCSS('border-color','rgb(220, 53, 69)');
 })
 
+
 })
-//////////////////////////
- 
 test.describe('Test Email Field',()  =>{
   let registrationForm : RegistrationForm;
   let loginData : LoginData;
@@ -75,8 +63,6 @@ test('Email incorrect2', async ({ page }) => {
 })
 
 })
-//////////////////////////
-
 test.describe('Test lastName Field',()  =>{
   let registrationForm : RegistrationForm;
   let loginData : LoginData;
@@ -93,14 +79,12 @@ test('lastName is required', async ({ page }) => {
   await expect(page.getByText(' Last name required')).toBeVisible();
 
 })
-
 test('lastName is invalid', async ({ page }) => {
   await loginData.inputLastName('Євген');
   await loginData.validLastName.blur();
    await expect(page.getByText('Name is invalid')).toBeVisible();
 
 })
-
 test('Wrong length LastName', async ({ page }) => {
   await loginData.inputLastName('S');
   await loginData.validLastName.blur();
@@ -113,7 +97,6 @@ test('Border color red lastName', async ({ page }) => {
   await expect(loginData.validLastName).toHaveCSS('border-color','rgb(220, 53, 69)');
 
 })
-///////////////
 
 test.describe('Test Email Field',()  =>{
   let registrationForm : RegistrationForm;
@@ -132,7 +115,6 @@ test('Wrong data', async ({ page }) => {
   await loginData.validPassword.blur();
    await expect(page.getByText('Password has to be from 8 to 15 characters long and contain at least one integer, one capital, and one small letter')).toBeVisible();
 
-
 })
 
 test('Empty field error', async ({ page }) => {
@@ -150,7 +132,6 @@ test('Border color red ', async ({ page }) => {
 
 })
 })
-//////////////////////
 
 test.describe('Test Passwords Field',()  =>{
   let registrationForm : RegistrationForm;
@@ -178,8 +159,6 @@ test('Re-enter password ', async ({ page }) => {
   await loginData.validReEnterPassword.fill('');
   await loginData.validReEnterPassword.blur();
   await expect(page.getByText('Re-enter password required')).toBeVisible(); 
-
-
 
 })
 test('Border color red Re-enter password', async ({ page }) => {

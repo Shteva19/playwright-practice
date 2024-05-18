@@ -10,9 +10,6 @@ import { expect, type Locator,type Page } from "@playwright/test";
        readonly validReEnterPassword:Locator;
        
         
-       
-
-
         constructor(page:Page){
             this.page =page;
             this.validName = page.locator('#signupName');
@@ -21,9 +18,6 @@ import { expect, type Locator,type Page } from "@playwright/test";
             this.validPassword = page.locator('#signupPassword');
             this.validReEnterPassword =page.locator("#signupRepeatPassword");
             
-             
-
-
         }
 
         async loginRegistrationForm (name:string,lastName:string,email:string,password:string,reEnterPassword:string){
